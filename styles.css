@@ -6,9 +6,19 @@
     font-size: 16px;
 }
 
+.container {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
 body{
     min-height: 100vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     background: linear-gradient(rgb(83, 165, 241),rgb(83, 165, 241) 50%, #fff 50%)
@@ -20,20 +30,31 @@ body{
     width: 20em;
     background-color: black;
     display: flex;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
+    z-index: 1;
     transition: .5s ease-in-out;
-    
 }
 
-.card:hover{
-    width: 40em;
+.card:not(:hover) {
+    z-index: 0;
+}
+
+.card > .details {
+    transform: translateX(-20em);
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+
+.card:hover > .details {
+    opacity: 1;
+    z-index: 2;
+    /* transform: translateX(0); */
+    transition: .5s ease-in-out;
+    background-color: rgba(83, 165, 241, .9);
 }
 
 .card .imgBx{
     min-width: 20em;
     height: 100%;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
